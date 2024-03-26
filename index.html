@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Slider</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+
+    <div id="app">
+
+        <div class="container">
+            <div @mouseover="stopSlideShow()" @mouseleave="slideShow()" class="slider-wrapper" tabindex="0">
+
+                <template v-for="(slide,i) in slides">
+
+                    <div v-if="i == currentSlide" class="item">
+                        <img  :src="slide.image"  />
+                        <div class="text">
+                            <h3>{{slide.title}}</h3>
+                            <p>
+                               {{slide.text}}
+                            </p>
+                        </div>
+                    </div>
+
+
+
+
+                </template>
+
+
+
+
+
+                <div class="thumbs">
+                    <div @click="minus()" class="prev"></div>
+                    <div @click="plus()" class="next"></div>
+                    <template v-for="(slide,i) in slides">
+                        <div @click="setSlide(i)" :class="i == currentSlide ? 'thumb active' : 'thumb' ">
+                            <img :src="slide.image"  />
+                        </div>
+                        
+
+                    </template>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    
+    <script src="./js/script.js"></script>
+</body>
+
+</html>
